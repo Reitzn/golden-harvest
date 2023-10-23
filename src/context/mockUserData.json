@@ -1,0 +1,913 @@
+{
+  "firstName": "Nick",
+  "lastName" : "Reitz",
+  "preferedDarkMode": true,
+  "locations": [
+    {
+      "uid": "dfdcc37f-7b75-410e-afe2-6b7b1149064d",
+      "name": "Tent 1",
+      "imgUrl": "https://placehold.jp/200x200.png"
+    },
+    {
+      "uid": "2d710f2b-3926-4d77-a279-475aca7dbe05",
+      "name": "Back Door",
+      "imgUrl": "https://placehold.jp/200x200.png"
+    },
+    {
+      "uid": "2d1ce00a-2a75-4c7f-a78e-51406575f06b",
+      "name": "House Plants",
+      "imgUrl": "https://placehold.jp/200x200.png"
+    }
+  ],
+  "plants": [
+    {
+      "uid": "8a8d359f-6166-4143-9f6e-889a7bf7d8e0",
+      "plantNumber": 0,
+      "variety": "Norfolk Island Pine",
+      "scientificName": "Araucaria Heterophylla",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "2d1ce00a-2a75-4c7f-a78e-51406575f06b",
+      "notes": []
+    },
+    {
+      "uid": "1ad58194-c10c-4eea-8768-e9fca0123bd6",
+      "plantNumber": 0,
+      "variety": "Fiddle Leaf Fig",
+      "scientificName": "Ficus Lyrata",
+      "imgUrl": "img/image_67192577.JPG",
+      "locationUid": "2d1ce00a-2a75-4c7f-a78e-51406575f06b",
+      "notes": []
+    },
+    {
+      "uid": "130085ba-692d-46e8-af52-c0bec2e665d6",
+      "plantNumber": 0,
+      "variety": "Polka Dot Begonia",
+      "scientificName": "Begonia Maculata",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "2d1ce00a-2a75-4c7f-a78e-51406575f06b",
+      "notes": []
+    },
+    {
+      "uid": "b01095c4-4d70-4d63-8f44-4361b68fd212",
+      "plantNumber": 0,
+      "variety": "Lofty Fig",
+      "scientificName": "Ficus Altissima",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "2d1ce00a-2a75-4c7f-a78e-51406575f06b",
+      "notes": []
+    },
+    {
+      "uid": "a9f7cebf-7130-46db-98e6-0ede84ad93d0",
+      "plantNumber": 1,
+      "plantUid": "ea5f33b4-2b60-4669-b26d-9e64677338f6",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "dfdcc37f-7b75-410e-afe2-6b7b1149064d",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "3/25/2023",
+          "note": "2g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/22/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "f8772076-0c92-4108-9d42-136631b2120e",
+      "plantNumber": 2,
+      "variety": "Aji Amarillo",
+      "scientificName": "Capsicum Baccatum",
+      "scovilleUnits": "30,000 - 50,000",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "dfdcc37f-7b75-410e-afe2-6b7b1149064d",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "3/25/2023",
+          "note": "2g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/22/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "32e53485-d7b7-4350-9abd-4639f1847fc7",
+      "plantNumber": 3,
+      "variety": "Thai Dragon",
+      "scientificName": "Capsicum Annuum",
+      "scovilleUnits": "50,000-100,000",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "dfdcc37f-7b75-410e-afe2-6b7b1149064d",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "3/27/2023",
+          "note": "2g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/25/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "afbc53e4-de83-4846-a72e-bfb15f204312",
+      "plantNumber": 4,
+      "variety": "Purple UFO",
+      "scientificName": "Capsicum Annuum",
+      "scovilleUnits": "30,000-45,000",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "dfdcc37f-7b75-410e-afe2-6b7b1149064d",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "3/27/2023",
+          "note": "2g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/25/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "715f9a21-9107-4ee0-a9f8-a3b2ee119b63",
+      "plantNumber": 5,
+      "variety": "Chocolate Anaheim",
+      "scientificName": "?",
+      "scovilleUnits": "?",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "dfdcc37f-7b75-410e-afe2-6b7b1149064d",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "3/27/2023",
+          "note": "2g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/25/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "d8a0d987-67aa-43c4-a6b1-ea9a5445cb15",
+      "plantNumber": 6,
+      "variety": "7 Pot Chocolate Brain Strain",
+      "scientificName": "Capsicum Chinense",
+      "scovilleUnits": "1,400,000",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "dfdcc37f-7b75-410e-afe2-6b7b1149064d",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "3/27/2023",
+          "note": "2g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/25/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "5e0ff872-86e0-4fc8-b0c4-1e7849c84772",
+      "plantNumber": 7,
+      "variety": "Doux D'Espagne",
+      "scientificName": "Capsicum Annuum",
+      "scovilleUnits": "?",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "dfdcc37f-7b75-410e-afe2-6b7b1149064d",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "3/27/2023",
+          "note": "2g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/25/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "ad29bbc0-3d38-4adc-b59d-bcd488d5c0a0",
+      "plantNumber": 8,
+      "variety": "Sugar Rush Peach",
+      "scientificName": "Capsicum Baccatum",
+      "scovilleUnits": "100,000 - 150,000",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "dfdcc37f-7b75-410e-afe2-6b7b1149064d",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "3/27/2023",
+          "note": "2g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/25/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "392d51c9-a9ac-4d68-8496-5fba2b45fd5f",
+      "plantNumber": 9,
+      "variety": "Santaka",
+      "scientificName": "Capsicum Annuum",
+      "scovilleUnits": "40,000 - 50,000",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "dfdcc37f-7b75-410e-afe2-6b7b1149064d",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "3/27/2023",
+          "note": "2g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/25/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "e7683b36-0d43-4a72-bc4d-ee3de6f13d03",
+      "plantNumber": 10,
+      "variety": "Habanada",
+      "scientificName": "Capsicum Chinense",
+      "scovilleUnits": "?",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "dfdcc37f-7b75-410e-afe2-6b7b1149064d",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "3/27/2023",
+          "note": "2g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/25/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "158771c8-4bb2-455d-ad7f-8d361f2f5ed9",
+      "plantNumber": 11,
+      "variety": "Aji Amarillo",
+      "scientificName": "Capsicum Baccatum",
+      "scovilleUnits": "30,000 - 50,000",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "dfdcc37f-7b75-410e-afe2-6b7b1149064d",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "3/28/2023",
+          "note": "2g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/25/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "644b72c1-0402-4429-9c8c-6b025efc19ce",
+      "plantNumber": 12,
+      "variety": "Purple UFO",
+      "scientificName": "Capsicum Annuum",
+      "scovilleUnits": "30,000-45,000",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "dfdcc37f-7b75-410e-afe2-6b7b1149064d",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "3/28/2023",
+          "note": "2g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/25/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "c02d48b3-c447-4a51-a0ba-2a7d3cf8c34b",
+      "plantNumber": 13,
+      "variety": "Sugar Rush Peach",
+      "scientificName": "Capsicum Baccatum",
+      "scovilleUnits": "100,000 - 150,000",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "dfdcc37f-7b75-410e-afe2-6b7b1149064d",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "3/28/2023",
+          "note": "2g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/26/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "2301367b-33c8-4adc-aa2b-f63535af6584",
+      "plantNumber": 14,
+      "variety": "Pepperoncini",
+      "scientificName": "Capsicum Annuum",
+      "scovilleUnits": "?",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "dfdcc37f-7b75-410e-afe2-6b7b1149064d",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "3/28/2023",
+          "note": "2g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/26/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "3df02471-3a73-4634-9a40-026d7aa7eec6",
+      "plantNumber": 15,
+      "variety": "Aji Mango",
+      "scientificName": "Capsicum Baccatum",
+      "scovilleUnits": "?",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "dfdcc37f-7b75-410e-afe2-6b7b1149064d",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "3/28/2023",
+          "note": "2g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/26/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "0f95f80a-6505-4a76-895c-065f4c30ce7a",
+      "plantNumber": 16,
+      "variety": "7 Pot Chocolate Brain Strain",
+      "scientificName": "Capsicum Chinense",
+      "scovilleUnits": "?",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "dfdcc37f-7b75-410e-afe2-6b7b1149064d",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "3/28/2023",
+          "note": "2g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/26/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "1472233b-33e3-4b0f-b9bb-bc297c3764d6",
+      "plantNumber": 17,
+      "variety": "Chocolate Anaheim",
+      "scientificName": "Capsicum Annuum",
+      "scovilleUnits": "?",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "dfdcc37f-7b75-410e-afe2-6b7b1149064d",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "3/28/2023",
+          "note": "2g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/26/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "52a0607e-6c72-402f-820d-3a2992ff0e6e",
+      "plantNumber": 18,
+      "variety": "Habanero Orange",
+      "scientificName": "Capsicum Chinense",
+      "scovilleUnits": "?",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "dfdcc37f-7b75-410e-afe2-6b7b1149064d",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "3/28/2023",
+          "note": "2g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/26/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "2cf35005-0f0f-4a8b-8f49-7402d8298d75",
+      "plantNumber": 19,
+      "variety": "Carolina Reaper",
+      "scientificName": "Capsicum Chinense",
+      "scovilleUnits": "?",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "dfdcc37f-7b75-410e-afe2-6b7b1149064d",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "3/28/2023",
+          "note": "2g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/26/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "c9bd6895-a0a6-4764-8d2c-643277bfb18d",
+      "plantNumber": 20,
+      "variety": "Aji Lemon Drop",
+      "scientificName": "Capsicum Baccatum",
+      "scovilleUnits": "?",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "dfdcc37f-7b75-410e-afe2-6b7b1149064d",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "3/28/2023",
+          "note": "2g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/26/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "f5bc421a-7aad-48b9-88c9-75ce2b922ea5",
+      "plantNumber": 21,
+      "variety": "Tobago Seasoning",
+      "scientificName": "Capsicum Chinense",
+      "scovilleUnits": "?",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "dfdcc37f-7b75-410e-afe2-6b7b1149064d",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "3/28/2023",
+          "note": "2g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/26/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "f5bc421a-7aad-48b9-88c9-4a03de33-f9ac-437b-ae26-7df296a9fd71",
+      "plantNumber": 22,
+      "variety": "Aji Lemon Drop",
+      "scientificName": "Capsicum Baccatum",
+      "scovilleUnits": "?",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "dfdcc37f-7b75-410e-afe2-6b7b1149064d",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "3/28/2023",
+          "note": "2g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/26/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "2bedcb58-561e-4523-91a9-69cfb888efac",
+      "plantNumber": 23,
+      "variety": "Chocolate Anaheim",
+      "scientificName": "Capsicum Annuum",
+      "scovilleUnits": "?",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "dfdcc37f-7b75-410e-afe2-6b7b1149064d",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "3/28/2023",
+          "note": "2g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/26/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "80b6cbc9-e7cd-4430-b270-6755234adcaf",
+      "plantNumber": 24,
+      "variety": "Doux D'Espagne",
+      "scientificName": "Capsicum Annuum",
+      "scovilleUnits": "?",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "dfdcc37f-7b75-410e-afe2-6b7b1149064d",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "3/28/2023",
+          "note": "2g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/26/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "5708b6f2-6b5f-4e93-91df-a3dd35a74ca0",
+      "plantNumber": 25,
+      "variety": "Thai Dragon",
+      "scientificName": "Capsicum Annuum",
+      "scovilleUnits": "?",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "dfdcc37f-7b75-410e-afe2-6b7b1149064d",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "3/28/2023",
+          "note": "2g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/26/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "9918a940-8033-469a-b3c0-ed40f7567752",
+      "plantNumber": 26,
+      "variety": "Habanada",
+      "scientificName": "?",
+      "scovilleUnits": "?",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "dfdcc37f-7b75-410e-afe2-6b7b1149064d",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "3/28/2023",
+          "note": "2g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Note",
+          "date": "3/27/2023",
+          "note": "I forgot to label the tray, it might be SRP or Aji Lemon. But probably is not. "
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/27/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "9e037f9c-59ac-4c5e-a476-fd1e13505872",
+      "plantNumber": 27,
+      "variety": "Habanada",
+      "scientificName": "?",
+      "scovilleUnits": "?",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "dfdcc37f-7b75-410e-afe2-6b7b1149064d",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "3/28/2023",
+          "note": "2g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Note",
+          "date": "3/27/2023",
+          "note": "I forgot to label the tray, it might be SRP or Aji Lemon. But probably is not. "
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/27/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "f24def83-5048-4e09-9a7c-37ab18537ad6",
+      "plantNumber": 28,
+      "variety": "Sugar Rush Peach",
+      "scientificName": "?",
+      "scovilleUnits": "?",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "dfdcc37f-7b75-410e-afe2-6b7b1149064d",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "3/28/2023",
+          "note": "2g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Note",
+          "date": "3/27/2023",
+          "note": "I forgot to label the tray, it might be Habanada or Aji Lemon. But probably is not. "
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/27/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "67d0851a-6c29-419c-8d07-db58894acafa",
+      "plantNumber": 29,
+      "variety": "Shishito",
+      "scientificName": "?",
+      "scovilleUnits": "?",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "2d710f2b-3926-4d77-a279-475aca7dbe05",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "4/1/2023",
+          "note": "1.5g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/28/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "eafdbb0d-cf43-4b02-ade2-a0cbe5146a95",
+      "plantNumber": 30,
+      "variety": "Santaka",
+      "scientificName": "?",
+      "scovilleUnits": "?",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "2d710f2b-3926-4d77-a279-475aca7dbe05",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "4/1/2023",
+          "note": "1.5g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/28/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "a6c88065-b862-495a-9609-1fd8b8fd6189",
+      "plantNumber": 31,
+      "variety": "Sugar Rush Peach",
+      "scientificName": "?",
+      "scovilleUnits": "?",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "2d710f2b-3926-4d77-a279-475aca7dbe05",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "4/1/2023",
+          "note": "1.5g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/28/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "0869f222-8c45-4031-aaa2-f422be858d8d",
+      "plantNumber": 32,
+      "variety": "Jalapeno Orange Spice",
+      "scientificName": "?",
+      "scovilleUnits": "?",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "2d710f2b-3926-4d77-a279-475aca7dbe05",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "4/1/2023",
+          "note": "1.5g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/28/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "ed740db5-43f6-404b-ba08-d71aa6a9101f",
+      "plantNumber": 33,
+      "variety": "Early Jalapeno",
+      "scientificName": "?",
+      "scovilleUnits": "?",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "2d710f2b-3926-4d77-a279-475aca7dbe05",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "4/1/2023",
+          "note": "1.5g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/28/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "ac4dad68-8e7e-4adc-901a-a2fe6e107d69",
+      "plantNumber": 34,
+      "variety": "Pepperoncini",
+      "scientificName": "?",
+      "scovilleUnits": "?",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "2d710f2b-3926-4d77-a279-475aca7dbe05",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "4/1/2023",
+          "note": "1.5g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/28/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "1ddeb811-1389-4236-bcdf-9d04088ea894",
+      "plantNumber": 35,
+      "variety": "Habanada",
+      "scientificName": "?",
+      "scovilleUnits": "?",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "2d710f2b-3926-4d77-a279-475aca7dbe05",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "4/1/2023",
+          "note": "1.5g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/28/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "616c5d9f-3d27-4d08-8eb5-1e205f832d1b",
+      "plantNumber": 36,
+      "variety": "Thai Dragon",
+      "scientificName": "?",
+      "scovilleUnits": "?",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "2d710f2b-3926-4d77-a279-475aca7dbe05",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "4/1/2023",
+          "note": "1.5g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/28/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "fae208b8-f3cd-4fd5-b680-2252e60e4abb",
+      "plantNumber": 37,
+      "variety": "Thai Dragon",
+      "scientificName": "?",
+      "scovilleUnits": "?",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "2d710f2b-3926-4d77-a279-475aca7dbe05",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "4/1/2023",
+          "note": "1.5g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/28/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "81113a9d-5812-4490-81a8-e05d42fcc258",
+      "plantNumber": 38,
+      "variety": "Purple UFO",
+      "scientificName": "?",
+      "scovilleUnits": "?",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "2d710f2b-3926-4d77-a279-475aca7dbe05",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "4/1/2023",
+          "note": "1.5g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/28/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "39cf2d33-d97c-488c-8bb6-a321fbf693eb",
+      "plantNumber": 39,
+      "variety": "Carolina Reaper",
+      "scientificName": "?",
+      "scovilleUnits": "?",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "dfdcc37f-7b75-410e-afe2-6b7b1149064d",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "4/1/2023",
+          "note": "1.5g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/29/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    },
+    {
+      "uid": "2700d2bd-2472-415d-8516-f72aac10ccb5",
+      "plantNumber": 40,
+      "variety": "Habanero Orange",
+      "scientificName": "?",
+      "scovilleUnits": "?",
+      "imgUrl": "https://placehold.jp/200x200.png",
+      "locationUid": "dfdcc37f-7b75-410e-afe2-6b7b1149064d",
+      "notes": [
+        {
+          "action": "Nutrients",
+          "date": "4/1/2023",
+          "note": "1.5g Botanicare Organicare Grow (7-6-9)"
+        },
+        {
+          "action": "Potting Up",
+          "date": "3/29/2023",
+          "note": "Potted up from seed tray"
+        }
+      ]
+    }
+  ]
+}
