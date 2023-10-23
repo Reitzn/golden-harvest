@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable default-case */
 import React, { useState } from "react";
 import { Container } from "@mui/material";
 import Button from "@mui/material/Button";

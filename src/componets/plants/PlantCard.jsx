@@ -19,7 +19,7 @@ export default function PlantCard(props) {
         <CardMedia
           component="img"
           height="140"
-          image={''}
+          image={imgUrl}
           alt="placeholder image"
         />
         <CardContent>

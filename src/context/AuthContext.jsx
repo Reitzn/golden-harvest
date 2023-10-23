@@ -29,6 +29,9 @@ export const AuthProvider = ({ children }) => {
   // calls this 14 times.
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      console.log(auth);
+      console.log(currentUser);
+
       if (currentUser) {
         login();
       } else {

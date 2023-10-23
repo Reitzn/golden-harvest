@@ -1,12 +1,10 @@
 import React from "react";
 
 import Grid from "@mui/material/Grid";
-import { useAuth } from "../../context/AuthContext";
 import PlantCard from "./PlantCard";
 
 export default function PlantsGrid(props) {
   const { plants } = props;
-  const { user } = useAuth();
 
   return (
     <>

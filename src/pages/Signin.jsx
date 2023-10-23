@@ -12,9 +12,8 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import LoadingButton from "@mui/lab/LoadingButton";
-import { useAuth } from "../context/AuthContext";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth, db } from "../firebase-config";
+import { auth } from "../firebase-config";
 import { useNavigate } from "react-router-dom";
 
 function Copyright(props) {

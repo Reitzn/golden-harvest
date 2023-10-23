@@ -1,7 +1,7 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import Croppie from "croppie";
 import { Avatar, Button } from "@mui/material";
-import { deepPurple } from "@mui/material/colors";
 import { addProfileImage } from "../../util/FirebaseUtil";
 
 import "croppie/croppie.css";

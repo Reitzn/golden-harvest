@@ -12,7 +12,6 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
 import DarkModeToggle from "./DarkModeToggle";
 import { auth } from "../../firebase-config";
 import { signOut } from "firebase/auth";
@@ -43,7 +42,6 @@ const settings = [
 ];
 
 function ResponsiveAppBar() {
-  const {user} = useAuth();
   console.log(auth)
   const profileImage = "https://firebasestorage.googleapis.com/v0/b/golden-harvest-dev.appspot.com/o/images%2Favatar%2F" + auth?.currentUser?.uid + "?alt=media";
 

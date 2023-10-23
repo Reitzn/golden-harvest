@@ -10,7 +10,7 @@ import ResponsiveAppBar from "./componets/header/ResponsiveAppBar";
 
 import ErrorPage from "./pages/Error";
 import TraysPage from "./pages/Trays";
-import MockTray from "./pages/MockTray";
+// import MockTray from "./pages/MockTray";
 import LocationsPage from "./pages/Locations";
 import PlantsPage from "./pages/Plants";
 import DashboardPage from "./pages/Dashboard";
@@ -42,7 +42,7 @@ export default function App() {
 
   const ProtectedRoute = ({ children }) => {
     const navigate = useNavigate();
-    const { user, isLoading } = useAuth();
+    const { isLoading } = useAuth();
     console.log(isLoading)
 
     useEffect(() => {
