@@ -28,12 +28,9 @@ export const AuthProvider = ({ children }) => {
   // calls this 14 times.
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log();
       if (currentUser) {
-        console.log("Loged in!");
         login();
       } else {
-        console.log("Loged Out!");
         setIsLoading(false);
         navigate("/");
       }
@@ -57,11 +54,8 @@ export const AuthProvider = ({ children }) => {
   // ------------------ Locations ------------------
 
   const addLocation = async (locationNameString, locationAboutSting) => {
-    console.log("Adding Location");
     return addLocationService(locationNameString, locationAboutSting).then(
       (docRef) => {
-        console.log("Successfully added a location");
-        console.log("Document written with ID: ", docRef.id);
         const newLocation = {
           uid: docRef.id,
           name: locationNameString,
@@ -83,7 +77,6 @@ export const AuthProvider = ({ children }) => {
       locationNameString,
       locationAboutSting
     ).then(() => {
-      console.log("update success");
       const newLocationData = {
         uid: locationUid,
         name: locationNameString,
@@ -94,13 +87,11 @@ export const AuthProvider = ({ children }) => {
         const updateLocations = [...locations];
         updateLocations[locationIndex] = newLocationData;
         setLocations(updateLocations);
-        console.log(" success two");
 
     });
   };
 
   const deleteLocation = async (locationUid) => {
-    console.log("Deleting location");
     return deleteLocationService(locationUid).then(() => {
       setLocations(
         locations.filter((location) => {
@@ -113,10 +104,7 @@ export const AuthProvider = ({ children }) => {
   // ------------------- Plants --------------------
 
   const addPlant = async (commonName, scientificName, selectedLocation) => {
-    console.log("Adding Plant");
     return addPlantService(commonName, scientificName, selectedLocation).then((docRef) => {
-      console.log("Successfully added a Plant");
-      console.log("Document written with ID: ", docRef.id);
       const newPlant = {
         uid: docRef.id,
         name: commonName,
@@ -141,12 +129,10 @@ export const AuthProvider = ({ children }) => {
         const updatePlants = [...plants];
         updatePlants[locationIndex] = newPlantData;
         setPlants(updatePlants);
-        console.log(" success two plants");
     })
   }
 
   const deletePlant = async (plantUid) => {
-    console.log("Deleting Plant");
     return deletePlantService(plantUid).then(() => {
       setPlants(
         plants.filter((plant) => {
