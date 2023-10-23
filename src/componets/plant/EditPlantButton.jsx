@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Button } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
@@ -111,9 +110,9 @@ export default function EditPlantButton(props) {
                 />
               </Grid>
               <Grid item xs={12}>
-                <FormControl>
+                <FormControl style={{width: "100%"}}>
                   <InputLabel id="demo-simple-select-helper-label">
-                    Age
+                    Location
                   </InputLabel>
                   <Select
                     labelId="demo-simple-select-helper-label"
@@ -126,7 +125,6 @@ export default function EditPlantButton(props) {
                       <em>None</em>
                     </MenuItem>
                     {locations?.map((location) => {
-                      console.log(location.name);
                       return (
                         <MenuItem value={location.uid}>
                           {location.name}

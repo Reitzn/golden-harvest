@@ -6,7 +6,6 @@ import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import { useAuth } from "../context/AuthContext";
 import { useParams } from "react-router-dom";
-import AspectRatio from "@mui/joy/AspectRatio";
 
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";

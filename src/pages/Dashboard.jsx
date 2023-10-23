@@ -1,6 +1,5 @@
 import { Container, Box } from "@mui/material";
 import UniquePlants from "../componets/dashboard/UniquePlants";
-import TempGraph from "../componets/location/TempGraph";
 
 export default function DashboardPage() {
   return (

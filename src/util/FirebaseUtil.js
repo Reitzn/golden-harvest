@@ -2,14 +2,12 @@ import {
   doc,
   getDocs,
   addDoc,
-  setDoc,
   updateDoc,
   collection,
   deleteDoc,
 } from "firebase/firestore";
 import { db } from "../firebase-config";
 import { auth } from "../firebase-config";
-import { v4 as uuidv4 } from "uuid";
 import { getStorage, ref, uploadBytes } from "firebase/storage";
 
 // --------------------------------------------------------------

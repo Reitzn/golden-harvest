@@ -7,7 +7,6 @@ import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import { LoadingButton } from "@mui/lab";
-import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
 import InputLabel from "@mui/material/InputLabel";
@@ -34,8 +33,6 @@ export default function AddPlantButton() {
   const [scientificNameErrorText, setScientificNameErrorText] = useState("");
   const [commonNameError, setCommonNameError] = useState(false);
   const [commonNameErrorText, setCommonNameErrorText] = useState("");
-
-  const navigate = useNavigate();
 
   const { addPlant, locations } = useAuth();
 
@@ -155,9 +152,9 @@ export default function AddPlantButton() {
                 />
               </Grid>
               <Grid item xs={12}>
-                <FormControl>
+                <FormControl style={{width: "100%"}}>
                   <InputLabel id="demo-simple-select-helper-label">
-                    Age
+                    Location
                   </InputLabel>
                   <Select
                     labelId="demo-simple-select-helper-label"

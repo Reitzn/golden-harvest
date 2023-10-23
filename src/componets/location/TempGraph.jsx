@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import { getDatabase, ref, onValue } from "firebase/database";
 import {
@@ -9,41 +10,10 @@ import {
   Tooltip,
   ResponsiveContainer,
   Label,
-  Legend,
 } from "recharts";
-import { Container, Box, ButtonGroup, Button } from "@mui/material";
+import { Box, ButtonGroup, Button } from "@mui/material";
 import moment from "moment";
 
-const data = [
-  {
-    date: "1/1/2023",
-    temp: 80,
-  },
-  {
-    date: "1/2/2023",
-    temp: 81,
-  },
-  {
-    date: "1/3/2023",
-    temp: 85,
-  },
-  {
-    date: "1/4/2023",
-    temp: 83,
-  },
-  {
-    date: "1/5/2023",
-    temp: 86,
-  },
-  {
-    date: "1/6/2023",
-    temp: 87,
-  },
-  {
-    date: "1/7/2023",
-    temp: 83,
-  },
-];
 
 export default function Example() {
   const dateFormatter = (date) => {
