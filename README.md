@@ -1,13 +1,18 @@
 # Golden Harvest 
 
-This project is a seed-to-harvest/plant tracking web app built for my Graduate project. 
+This project is a seed-to-harvest/plant tracking web app bootstrapped with [Create React App](https://github.com/facebook/create-react-app). 
+
+## Tech Stack 
+- Firebase
+- React Router 
+- MUI
+
+## Test Account 
+admin@admin.com
+password1
 
 
-
-# Original Doc Stuff
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Original CRA Doc Stuff
 
 ## Available Scripts
 

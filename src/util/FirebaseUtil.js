@@ -1,14 +1,18 @@
 import {
   doc,
+  getDoc,
   getDocs,
   addDoc,
   updateDoc,
   collection,
   deleteDoc,
+  arrayUnion,
+  arrayRemove,
 } from "firebase/firestore";
 import { db } from "../firebase-config";
 import { auth } from "../firebase-config";
 import { getStorage, ref, uploadBytes } from "firebase/storage";
+
 
 // --------------------------------------------------------------
 // ----------------------- User Services ------------------------
@@ -16,7 +20,22 @@ import { getStorage, ref, uploadBytes } from "firebase/storage";
 
 // Get User
 export const getUserService = async () => {
-  console.log("Getting suer data");
+  const docRef = doc(db, "users", auth?.currentUser?.uid);
+  const docSnap = await getDoc(docRef);
+
+  return docSnap.data();
+};
+
+// Update User
+export const updateUserService = async (firstName, lastName) => {
+  const docRef = doc(db, "users", auth?.currentUser?.uid);
+
+  const newUserData = {
+    firstName,
+    lastName,
+  };
+
+  return await updateDoc(docRef, newUserData);
 };
 
 // Add Profile Image
@@ -73,21 +92,26 @@ export const addPlantService = async (name, scientificName, location) => {
   return await addDoc(plantsRef, newPlant);
 };
 
-// Update Plant 
-export const updatePlantService = async (plantUid, name, scientificName, selectedLocation) => {
+// Update Plant
+export const updatePlantService = async (
+  plantUid,
+  name,
+  scientificName,
+  selectedLocation
+) => {
   const newPlantData = {
-    name, 
+    name,
     scientificName,
     location: selectedLocation,
     imgUrl: "https://placehold.jp/200x200.png",
-  }
+  };
 
   const plantsRef = doc(
     collection(db, "users", auth?.currentUser?.uid, "plants"),
     plantUid
   );
-  return await updateDoc(plantsRef, newPlantData)
-}
+  return await updateDoc(plantsRef, newPlantData);
+};
 
 // Delete Plant
 export const deletePlantService = async (plantUid) => {
@@ -96,6 +120,41 @@ export const deletePlantService = async (plantUid) => {
     plantUid
   );
   return await deleteDoc(plantsRef);
+};
+
+// --- Plant Notes ---
+
+// Add Plant Note
+export const addPlantNoteService = async (plantUid, date, action, note) => {
+  const plantsRef = doc(
+    collection(db, "users", auth?.currentUser?.uid, "plants"),
+    plantUid
+  );
+  const newNoteData = {
+    date,
+    action,
+    note,
+  };
+
+  return await updateDoc(plantsRef, {
+    notes: arrayUnion(newNoteData),
+  });
+};
+
+export const deletePlantNoteService = async (plantUid, date, action, note) => {
+  const plantsRef = doc(
+    collection(db, "users", auth?.currentUser?.uid, "plants"),
+    plantUid
+  );
+  const newNoteData = {
+    date,
+    action,
+    note,
+  };
+
+  return await updateDoc(plantsRef, {
+    notes: arrayRemove(newNoteData),
+  });
 };
 
 // --------------------------------------------------------------
@@ -138,7 +197,6 @@ export const updateLocationService = async (
   locationName,
   locationAbout
 ) => {
-
   const newLocationData = {
     name: locationName,
     about: locationAbout,
@@ -149,7 +207,7 @@ export const updateLocationService = async (
     collection(db, "users", auth?.currentUser?.uid, "locations"),
     locationUid
   );
-  return await updateDoc(plantsRef, newLocationData)
+  return await updateDoc(plantsRef, newLocationData);
 };
 
 // Delete Location

@@ -1,10 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { createContext, useContext, useMemo, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import data from "./mockUserData";
 import { auth } from "../firebase-config";
 import { onAuthStateChanged } from "firebase/auth";
 import {
+  getUserService,
+  updateUserService,
   getPlantsService,
   addPlantService,
   updatePlantService,
@@ -13,6 +14,8 @@ import {
   addLocationService,
   updateLocationService,
   deleteLocationService,
+  addPlantNoteService,
+  deletePlantNoteService,
 } from "../util/FirebaseUtil";
 
 const AuthContext = createContext();
@@ -29,11 +32,8 @@ export const AuthProvider = ({ children }) => {
   // calls this 14 times.
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log(auth);
-      console.log(currentUser);
-
       if (currentUser) {
-        login();
+        populateContext();
       } else {
         setIsLoading(false);
         navigate("/");
@@ -45,15 +45,24 @@ export const AuthProvider = ({ children }) => {
     };
   }, []);
 
-  const login = async () => {
+  const populateContext = async () => {
     setLocations(await getLocationService());
     setPlants(await getPlantsService());
-    setUser(data);
+    setUser(await getUserService());
     setIsLoading(false);
-    // navigate("/dashboard");
   };
 
   // -------------------- User ---------------------
+
+  const updateUser = async (firstName, lastName) => {
+    updateUserService(firstName, lastName).then(() => {
+      const newUserData = {
+        firstName,
+        lastName,
+      };
+      setUser(newUserData);
+    });
+  };
 
   // ------------------ Locations ------------------
 
@@ -87,18 +96,19 @@ export const AuthProvider = ({ children }) => {
         about: locationAboutSting,
         imgUrl: "https://placehold.jp/200x200.png",
       };
-        const locationIndex = locations.findIndex((location => location.uid === locationUid));
-        const updateLocations = [...locations];
-        updateLocations[locationIndex] = newLocationData;
-        setLocations(updateLocations);
-
+      const locationIndex = locations.findIndex(
+        (location) => location.uid === locationUid
+      );
+      const updateLocations = [...locations];
+      updateLocations[locationIndex] = newLocationData;
+      setLocations(updateLocations);
     });
   };
 
   const deleteLocation = async (locationUid) => {
     return deleteLocationService(locationUid).then(() => {
       setLocations(
-        locations.filter((location) => {
+        locations?.filter((location) => {
           return location.uid !== locationUid;
         })
       );
@@ -108,20 +118,32 @@ export const AuthProvider = ({ children }) => {
   // ------------------- Plants --------------------
 
   const addPlant = async (commonName, scientificName, selectedLocation) => {
-    return addPlantService(commonName, scientificName, selectedLocation).then((docRef) => {
-      const newPlant = {
-        uid: docRef.id,
-        name: commonName,
-        scientificName: scientificName,
-        location: selectedLocation,
-        imgUrl: "https://placehold.jp/200x200.png",
-      };
-      setPlants((oldArray) => [...oldArray, newPlant]);
-    });
+    return addPlantService(commonName, scientificName, selectedLocation).then(
+      (docRef) => {
+        const newPlant = {
+          uid: docRef.id,
+          name: commonName,
+          scientificName: scientificName,
+          location: selectedLocation,
+          imgUrl: "https://placehold.jp/200x200.png",
+        };
+        setPlants((oldArray) => [...oldArray, newPlant]);
+      }
+    );
   };
 
-  const updatePlant = async (plantUid, commonName, scientificName, selectedLocation) => {
-    updatePlantService(plantUid, commonName, scientificName, selectedLocation).then(() => {
+  const updatePlant = async (
+    plantUid,
+    commonName,
+    scientificName,
+    selectedLocation
+  ) => {
+    updatePlantService(
+      plantUid,
+      commonName,
+      scientificName,
+      selectedLocation
+    ).then(() => {
       const newPlantData = {
         uid: plantUid,
         name: commonName,
@@ -129,34 +151,63 @@ export const AuthProvider = ({ children }) => {
         location: selectedLocation,
         imgUrl: "https://placehold.jp/200x200.png",
       };
-        const locationIndex = plants.findIndex((plant => plant.uid === plantUid));
-        const updatePlants = [...plants];
-        updatePlants[locationIndex] = newPlantData;
-        setPlants(updatePlants);
-    })
-  }
+
+      const updatedPlants = plants.map((plant) =>
+        plant.uid === plantUid ? { ...plant, ...newPlantData } : plant
+      );
+
+      setPlants(updatedPlants);
+    });
+  };
 
   const deletePlant = async (plantUid) => {
     return deletePlantService(plantUid).then(() => {
       setPlants(
-        plants.filter((plant) => {
+        plants?.filter((plant) => {
           return plant.uid !== plantUid;
         })
       );
     });
   };
 
+  // Plant notes
+  // TO-DO: Throwing an error for the first. No 'notes' is not a thing.
+  const addPlantNote = async (plantUid, date, action, note) => {
+    return addPlantNoteService(plantUid, date, action, note).then(() => {
+      const newPlantNoteData = {
+        date, action, note
+      }
+      const locationIndex = plants.findIndex((plant => plant.uid === plantUid));
+      const updatedPlants = [...plants];
+      updatedPlants[locationIndex].notes.push(newPlantNoteData)
+      setPlants(updatedPlants);
+    });
+  };
+
+  const deletePlantNote = async (plantUid, date, action, note) => {
+    deletePlantNoteService(plantUid, date, action, note).then(() => {
+      const locationIndex = plants.findIndex((plant => plant.uid === plantUid));
+      const noteLocationIndex = plants[locationIndex].notes.findIndex((thisNote => thisNote.note === note));
+      const updatedPlants = [...plants];
+      updatedPlants[locationIndex].notes.splice(noteLocationIndex, 1)
+      setPlants(updatedPlants);
+    })
+  }
+
   const value = useMemo(
     () => ({
       user,
       locations,
       plants,
+      updateUser,
       addPlant,
       updatePlant,
       deletePlant,
       addLocation,
       updateLocation,
       deleteLocation,
+      addPlantNote,
+      deletePlantNote,
       isLoading,
     }),
     [user, locations, plants]

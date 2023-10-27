@@ -9,9 +9,15 @@ import Stack from "@mui/material/Stack";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { getAuth } from "firebase/auth";
 import ProfileImage from "../componets/profile/ProfileImage";
-
+import { styled } from "@mui/material/styles";
+import { Box, Grid } from "@mui/material";
+import Paper from "@mui/material/Paper";
+import { useAuth } from "../context/AuthContext";
+import { PageItem } from "../componets/shared/PageItem";
+import EditProfileButton from "../componets/profile/EditProfileButton";
 
 export default function ProfilePage() {
+  const { user } = useAuth();
   const storage = getStorage();
   const auth = getAuth();
   console.log(auth);
@@ -32,15 +38,15 @@ export default function ProfilePage() {
     "/images/profile/" + auth?.currentUser?.uid
   );
 
-  // Crop the img for good profile image 
+  // Crop the img for good profile image
   // https://foliotek.github.io/Croppie/
 
   // Get the download URL
   getDownloadURL(pathReference)
     .then((url) => {
       // Insert url into an <img> tag to "download"
-      console.log(url)
-      setProfileImage(url)
+      console.log(url);
+      setProfileImage(url);
     })
     .catch((error) => {
       // A full list of error codes is available at
@@ -68,7 +74,32 @@ export default function ProfilePage() {
     <>
       <Container>
         <h1>Profile</h1>
-        <ProfileImage />
+        <Box
+          m={3}
+          display="flex"
+          justifyContent="flex-end"
+          alignItems="flex-end"
+        >
+          <EditProfileButton />
+        </Box>
+        <Grid container spacing={2}>
+          <Grid item xs={12} md={6}>
+            <ProfileImage />
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <PageItem>
+              <h2>About</h2>
+              <Grid container spacing={2}>
+                <Grid item xs={6} md={3}>
+                  <b>Name:</b>
+                </Grid>
+                <Grid item xs={6} md={3}>
+                  {user?.firstName} {user?.lastName}
+                </Grid>
+              </Grid>
+            </PageItem>
+          </Grid>
+        </Grid>
       </Container>
     </>
   );

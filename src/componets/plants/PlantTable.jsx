@@ -9,8 +9,8 @@ import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 
-function createData(uid, plantNumber, variety, scientificName, scovilleUnits) {
-  return { uid, plantNumber, variety, scientificName, scovilleUnits };
+function createData(uid, plantNumber, name, scientificName) {
+  return { uid, plantNumber, name, scientificName };
 }
 
 export default function BasicTable(props) {
@@ -21,9 +21,8 @@ export default function BasicTable(props) {
     return createData(
       plant.uid,
       plant.plantNumber,
-      plant.variety,
+      plant.name,
       plant.scientificName,
-      plant.scovilleUnits
     );
   });
 
@@ -36,7 +35,6 @@ export default function BasicTable(props) {
               <TableCell>Plant ID</TableCell>
               <TableCell>Variety</TableCell>
               <TableCell>Scientific Name</TableCell>
-              <TableCell>Scoville Units</TableCell>
               <TableCell></TableCell>
             </TableRow>
           </TableHead>
@@ -49,9 +47,8 @@ export default function BasicTable(props) {
                 <TableCell component="th" scope="row">
                   {row.plantNumber}
                 </TableCell>
-                <TableCell>{row.variety}</TableCell>
+                <TableCell>{row.name}</TableCell>
                 <TableCell>{row.scientificName}</TableCell>
-                <TableCell>{row.scovilleUnits}</TableCell>
                 <TableCell>
                   <Button
                     variant="text"

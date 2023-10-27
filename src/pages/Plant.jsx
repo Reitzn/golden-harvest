@@ -1,61 +1,57 @@
 import React from "react";
 import IconButton from "@mui/material/IconButton";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
-import { Container, Grid, Button } from "@mui/material";
-import { styled } from "@mui/material/styles";
-import Paper from "@mui/material/Paper";
+import { Container, Grid } from "@mui/material";
 import { useAuth } from "../context/AuthContext";
 import { useParams } from "react-router-dom";
-
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
 import { Box } from "@mui/material";
 
-import DeletePlantButton from "../componets/plant/DeletePlantButton";
-import EditPlantButton from "../componets/plant/EditPlantButton";
+import EditPlantMenu from "../componets/plant/EditPlantMenu/EditPlantMenu";
+import AddPlantNoteButton from "../componets/plant/PlantNote/AddPlantNoteButton";
+import DeletePlantNoteButton from "../componets/plant/PlantNote/DeletePlantNoteButton";
+
+import moment from "moment";
+
+import { PageItem } from "../componets/shared/PageItem";
 
 export default function PlantPage() {
-  const { plants } = useAuth();
+  const { plants, locations } = useAuth();
   let { plantUid } = useParams();
 
   const plant = plants?.find((plant) => plant.uid === plantUid);
 
-  console.log(plant);
-
-  // Defult code from MUI for grid examples.
-  const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-    ...theme.typography.body2,
-    padding: theme.spacing(2),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-  }));
+  const plantLocation = locations?.find((location) => location?.uid === plant?.location);
 
   // https://smartdevpreneur.com/setting-material-ui-grid-item-height/
 
   return (
     <Container>
-      <h1>{plant?.name}</h1>
-      <Box m={3} display="flex" justifyContent="flex-end" alignItems="flex-end">
-        <EditPlantButton plantUid={plantUid} />
-        <DeletePlantButton plantUid={plantUid} />
-      </Box>
+      <Grid container direction="row" alignItems="center">
+        <Grid container item xs={10} justifyContent="flex-start">
+          <h1>{plant?.name}</h1>
+        </Grid>
+        <Grid container item xs={2} justifyContent="flex-end">
+          <EditPlantMenu />
+        </Grid>
+      </Grid>
       <Grid container spacing={2}>
         <Grid item xs={12} md={6}>
-          <Item>
+          <PageItem>
             {/* <AspectRatio objectFit="contain"> */}
             <img
               src={plant?.imgUrl}
               alt=""
-              style={{ maxWidth: "-webkit-fill-available" }}
+              style={{ maxWidth: "-webkit-fill-available", maxHeight: "250px" }}
             />
             {/* </AspectRatio> */}
-          </Item>
+          </PageItem>
         </Grid>
         <Grid item xs={12} md={6}>
-          <Item>
+          <PageItem>
             <h2>About</h2>
             <Grid container spacing={2}>
               {/* <Grid item xs={6} md={3}>
@@ -76,11 +72,11 @@ export default function PlantPage() {
               <Grid item xs={6} md={3}>
                 {plant?.scientificName}
               </Grid>
-               <Grid item xs={6} md={3}>
+              <Grid item xs={6} md={3}>
                 <b>Location:</b>
               </Grid>
               <Grid item xs={6} md={3}>
-                {plant?.location}
+                {plantLocation?.name}
               </Grid>
               {/*<Grid item xs={6} md={3}>
                 <b>Origin:</b>
@@ -95,10 +91,10 @@ export default function PlantPage() {
                 {plant?.date?.toDate().toLocaleTimeString("en-US")}
               </Grid> */}
             </Grid>
-          </Item>
+          </PageItem>
         </Grid>
         <Grid item xs={12}>
-          <Item>
+          <PageItem>
             <h2>Notes</h2>
             <List
               sx={{
@@ -111,18 +107,19 @@ export default function PlantPage() {
                 <>
                   {/* maybe i could do better with a key but.... will they ever be the same? lol */}
                   <ListItem key={note.note}>
-                    <ListItemText primary={note.action} secondary={note.date} />
+                    <ListItemText primary={note.action} secondary={moment.unix(note.date).format("MM/DD/YYYY")} />
                     <ListItemText secondary={note.note} />
+                    <DeletePlantNoteButton plantUid={plantUid} {...note}  />
                   </ListItem>
                   <Divider component="li" />
                 </>
               ))}
             </List>
-            <Button>Add</Button>
-          </Item>
+            <AddPlantNoteButton plantUid={plantUid} />
+          </PageItem>
         </Grid>
         <Grid item xs={12}>
-          <Item>
+          <PageItem>
             <h2>Images</h2>
             <Box
               m={3}
@@ -139,7 +136,7 @@ export default function PlantPage() {
                 <PhotoCamera />
               </IconButton>
             </Box>
-          </Item>
+          </PageItem>
         </Grid>
       </Grid>
     </Container>

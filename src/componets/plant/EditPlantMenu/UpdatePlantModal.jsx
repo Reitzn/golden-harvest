@@ -1,11 +1,12 @@
+// TO-DO: Get location to defualt with current selected location
+
 import React, { useState } from "react";
-import { Button } from "@mui/material";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../../context/AuthContext";
 
 import { LoadingButton } from "@mui/lab";
 
@@ -14,25 +15,26 @@ import MenuItem from "@mui/material/MenuItem";
 import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import { useParams } from "react-router-dom";
 
-export default function EditPlantButton(props) {
-  const [open, setOpen] = useState(false);
+export default function EditPlantModal(props) {
   const [isLoading, setIsLoading] = useState(false);
+  const { isModalOpen, setIsModalOpen } = props;
 
-  const { plantUid } = props;
+  const { plantUid } = useParams();
   const { plants, updatePlant, locations } = useAuth();
 
-  const currentPlant = plants.filter((plant) => {
+  const currentPlant = plants?.filter((plant) => {
     return plant.uid === plantUid;
   })[0];
 
-  const [selectedLocation, setSelectedLocation] = React.useState("");
+  const [selectedLocation, setSelectedLocation] = useState("");
 
   const handleChange = (event) => {
     setSelectedLocation(event.target.value);
   };
 
-  const handleClose = () => setOpen(false);
+  const handleClose = () => setIsModalOpen(false);
 
   const handleSubmit = (event) => {
     setIsLoading(true);
@@ -69,11 +71,8 @@ export default function EditPlantButton(props) {
 
   return (
     <>
-      <Button onClick={() => setOpen(true)} variant="contained" color="success">
-        Edit Plant
-      </Button>
       <Modal
-        open={open}
+        open={isModalOpen}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
@@ -85,7 +84,7 @@ export default function EditPlantButton(props) {
             component="h2"
             gutterBottom
           >
-            Edit Location
+            Edit Plant
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate>
             <Grid container spacing={2}>
@@ -95,7 +94,7 @@ export default function EditPlantButton(props) {
                   name="commonName"
                   label="Common Name"
                   variant="outlined"
-                  defaultValue={currentPlant.name}
+                  defaultValue={currentPlant?.name}
                   fullWidth
                 />
               </Grid>
@@ -105,7 +104,7 @@ export default function EditPlantButton(props) {
                   name="scientificName"
                   label="Scientific Name"
                   variant="outlined"
-                  defaultValue={currentPlant.scientificName}
+                  defaultValue={currentPlant?.scientificName}
                   fullWidth
                 />
               </Grid>
@@ -126,8 +125,8 @@ export default function EditPlantButton(props) {
                     </MenuItem>
                     {locations?.map((location) => {
                       return (
-                        <MenuItem value={location.uid}>
-                          {location.name}
+                        <MenuItem value={location?.uid}>
+                          {location?.name}
                         </MenuItem>
                       );
                     })}

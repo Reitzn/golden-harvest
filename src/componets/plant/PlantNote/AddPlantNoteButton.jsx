@@ -5,40 +5,45 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../../context/AuthContext";
 
 import { LoadingButton } from "@mui/lab";
 
-export default function EditLocationButton(props) {
+import { DatePicker } from "@mui/x-date-pickers";
+
+import moment from "moment";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
+
+export default function AddPlantNoteButton(props) {
   const [open, setOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [value, setValue] = useState(moment());
 
-  const { locationUid } = props;
-  const { locations, updateLocation } = useAuth();
-
-  const currentLocation = locations.filter((location) => {
-    return location.uid === locationUid;
-  })[0]
-
-  console.log(currentLocation)
+  const { plantUid } = props;
+  const { addPlantNote } = useAuth();
 
   const handleClose = () => setOpen(false);
-
 
   const handleSubmit = (event) => {
     setIsLoading(true);
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
-      locationName: data.get("locationName"),
-      locationAbout: data.get("locationAbout"),
+      value: value,
+      action: data.get("action"),
+      note: data.get("note"),
     });
-    updateLocation(locationUid, data.get("locationName"), data.get("locationAbout")).then(
-      () => {
-        setIsLoading(false);
-        handleClose();
-      }
-    );
+
+    addPlantNote(
+      plantUid,
+      value.unix(),
+      data.get("action"),
+      data.get("note"),
+    ).then(() => {
+      setIsLoading(false);
+      handleClose();
+    });
   };
 
   // Style for modal, mostly from MUI
@@ -57,13 +62,7 @@ export default function EditLocationButton(props) {
 
   return (
     <>
-      <Button
-        onClick={() => setOpen(true)}
-        variant="contained"
-        color="success"
-      >
-        Edit Location
-      </Button>
+      <Button onClick={() => setOpen(true)}>Add</Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -82,19 +81,30 @@ export default function EditLocationButton(props) {
           <Box component="form" onSubmit={handleSubmit} noValidate>
             <Grid container spacing={2}>
               <Grid item xs={12}>
+                <LocalizationProvider dateAdapter={AdapterMoment}>
+                  <DatePicker
+                    value={value}
+                    onChange={(newValue) => setValue(newValue)}
+                    renderInput={(params) => (
+                      <TextField fullWidth {...params} />
+                    )}
+                  />
+                </LocalizationProvider>
+              </Grid>
+              <Grid item xs={12}>
                 <TextField
-                  name="locationName"
-                  label="Location Name"
+                  id="action"
+                  name="action"
+                  label="Action"
                   variant="outlined"
-                  defaultValue={currentLocation.name}
+                  defaultValue=""
                   fullWidth
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  name="locationAbout"
-                  label="About"
-                  defaultValue={currentLocation.about}
+                  name="note"
+                  label="Note"
                   multiline
                   rows={4}
                   fullWidth
@@ -109,7 +119,7 @@ export default function EditLocationButton(props) {
                   size="large"
                   fullWidth
                 >
-                  Update
+                  Add
                 </LoadingButton>
               </Grid>
             </Grid>

@@ -8,22 +8,22 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { useAuth } from "../../context/AuthContext";
 
-function createData(variety, count) {
-  return { variety, count };
+function createData(name, count) {
+  return { name, count };
 }
 
 export default function BasicTable(props) {
-  const { user } = useAuth();
+  const { plants } = useAuth();
 
-  const count = user?.plants?.reduce((tally, plant) => {
-    tally[plant.variety] = (tally[plant.variety] || 0) + 1;
+  const count = plants?.reduce((tally, plant) => {
+    tally[plant.name] = (tally[plant.name] || 0) + 1;
     return tally;
   }, {});
 
-  let plants = [];
+  let plantsData = [];
   if (count) {
     for (const [key, value] of Object.entries(count)) {
-      plants.push(createData(key, value));
+      plantsData.push(createData(key, value));
     }
   }
 
@@ -38,13 +38,13 @@ export default function BasicTable(props) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {plants?.map((row) => (
+            {plantsData?.map((row) => (
               <TableRow
-                key={row.variety}
+                key={row.name}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
                 <TableCell component="th" scope="row">
-                  {row.variety}
+                  {row.name}
                 </TableCell>
                 <TableCell>{row.count}</TableCell>
               </TableRow>

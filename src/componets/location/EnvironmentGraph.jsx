@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import { getDatabase, ref, onValue } from "firebase/database";
 import {
@@ -17,7 +18,7 @@ import moment from "moment";
 import { useParams } from "react-router-dom";
 import { auth } from "../../firebase-config";
 
-export default function Example() {
+export default function EnvironmentGraph() {
   const dateFormatter = (date) => {
     return moment(date).format("MM/DD/YY HH:mm");
   };
@@ -40,16 +41,11 @@ export default function Example() {
   const [yAxisLabel, setYAxisLabel] = useState(temperatureYAxisLabel);
 
   const db = getDatabase();
-  const dataRef = ref(db, auth?.currentUser?.uid + "/" + locationUid);
+  const dataRef = ref(db, auth?.currentUser?.uid + "/" + locationUid + "/temperature/history");
 
-  // onValue(starCountRef, (snapshot) => {
-  //   const data = snapshot.val();
-  //   console.log(data);
-  //   setTemp(Object.values(data.temperature.history).map((project) => project));
-  //   // updateStarCount(postElement, data);
-  // });
+  let temperature = null;
 
-  // this useEffect will get called only
+    // this useEffect will get called only
   // when component gets mounted first time
   useEffect(() => {
     // here onValue will get initialized once
@@ -58,29 +54,18 @@ export default function Example() {
     onValue(dataRef, (snapshot) => {
       const data = snapshot.val();
       console.log(data);
-      // Once this gets data on the fly this will not work
-      setCurrent(
-        Object.values(data.temperature.history).map((project) => project)
-      );
 
       setTemp(
-        Object.values(data.temperature.history).map((project) => project)
+        Object.values(data).map((project) => project)
       );
-      setHumidity(
-        Object.values(data.humidity.history).map((project) => project)
-      );
-      setIlluminance(
-        Object.values(data.illuminance.history).map((project) => project)
-      );
-      setPressure(
-        Object.values(data.pressure.history).map((project) => project)
-      );
+
     });
     return () => {
       // this is cleanup function, will call just on component will unmount
       // you can clear your events listeners or any async calls here
     };
   }, []);
+    
 
   const tooltipLabelStyle = {
     color: "black",
@@ -97,7 +82,7 @@ export default function Example() {
   }));
 
   return (
-    current && (
+    temp && (
       <Grid container paddingTop="20px" spacing={2}>
         <Grid item xs={12}>
           <Item>
@@ -113,7 +98,7 @@ export default function Example() {
                   <LineChart
                     width={500}
                     height={300}
-                    data={current}
+                    data={temp}
                     margin={{
                       top: 5,
                       right: 30,
@@ -124,7 +109,7 @@ export default function Example() {
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis
                       dataKey="ts"
-                      domain={[current[0].ts, current[current.length - 1].ts]}
+                      domain={[temp[0].ts, temp[temp.length - 1].ts]}
                       scale="time"
                       type="number"
                       tickFormatter={dateFormatter}

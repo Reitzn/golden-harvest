@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function PlantCard(props) {
   const navigate = useNavigate();
-  const { uid, plantNumber, variety, scientificName, imgUrl } = props;
+  const { uid, plantNumber, name, scientificName, imgUrl } = props;
 
   const handleClick = () => {
     console.log("Clicked on plant card");
@@ -24,7 +24,7 @@ export default function PlantCard(props) {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {plantNumber} {variety}
+            {plantNumber} {name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             Scientific Name: {scientificName}

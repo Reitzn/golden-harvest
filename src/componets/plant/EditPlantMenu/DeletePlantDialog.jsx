@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import {
   Button,
   Dialog,
@@ -7,49 +7,39 @@ import {
   DialogContentText,
   DialogTitle,
 } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
-
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../../context/AuthContext";
+import { useParams } from "react-router-dom";
 
-import { useAuth } from "../../context/AuthContext";
+export default function DeletePlantDialog(props) {
+  const { deletePlant } = useAuth();
+  const { isDialogOpen, setIsDialogOpen } = props;
+  let { plantUid } = useParams();
 
-export default function DeleteLocationButton(props) {
-  const [open, setOpen] = useState(false);
-  const { deleteLocation } = useAuth();
-
-  const { locationUid } = props;
   const navigate = useNavigate();
 
   const confirmDeletePlant = () => {
-    deleteLocation(locationUid).then((e) => {
-      navigate("/locations");
+    deletePlant(plantUid).then(() => {
+      navigate("/plants");
     });
   };
 
   return (
     <>
-      <Button
-        variant="contained"
-        color="error"
-        onClick={() => setOpen(true)}
-        startIcon={<DeleteIcon />}
-      >
-        Delete
-      </Button>
       <Dialog
-        open={open}
-        onClose={() => setOpen(false)}
+        open={isDialogOpen}
+        onClose={() => setIsDialogOpen(false)}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">Are you sure?</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Are you sure you want to delete this location?
+            Are you sure you want to delete this Plant?
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => setOpen(false)}>Cancel</Button>
+          <Button onClick={() => setIsDialogOpen(false)}>Cancel</Button>
           <Button color="error" onClick={confirmDeletePlant} autoFocus>
             Delete
           </Button>

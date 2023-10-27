@@ -42,7 +42,6 @@ const settings = [
 ];
 
 function ResponsiveAppBar() {
-  console.log(auth)
   const profileImage = "https://firebasestorage.googleapis.com/v0/b/golden-harvest-dev.appspot.com/o/images%2Favatar%2F" + auth?.currentUser?.uid + "?alt=media";
 
   const navigate = useNavigate();
