@@ -16,6 +16,7 @@ import {
   deleteLocationService,
   addPlantNoteService,
   deletePlantNoteService,
+  addPlantImagesService,
 } from "../util/FirebaseUtil";
 
 const AuthContext = createContext();
@@ -125,6 +126,7 @@ export const AuthProvider = ({ children }) => {
           name: commonName,
           scientificName: scientificName,
           location: selectedLocation,
+          notes: [],
           imgUrl: "https://placehold.jp/200x200.png",
         };
         setPlants((oldArray) => [...oldArray, newPlant]);
@@ -171,7 +173,6 @@ export const AuthProvider = ({ children }) => {
   };
 
   // Plant notes
-  // TO-DO: Throwing an error for the first. No 'notes' is not a thing.
   const addPlantNote = async (plantUid, date, action, note) => {
     return addPlantNoteService(plantUid, date, action, note).then(() => {
       const newPlantNoteData = {
@@ -184,12 +185,28 @@ export const AuthProvider = ({ children }) => {
     });
   };
 
+  //TO-DO: Set and use a plant noat uid instead of looking at the notes text. 
   const deletePlantNote = async (plantUid, date, action, note) => {
     deletePlantNoteService(plantUid, date, action, note).then(() => {
       const locationIndex = plants.findIndex((plant => plant.uid === plantUid));
       const noteLocationIndex = plants[locationIndex].notes.findIndex((thisNote => thisNote.note === note));
       const updatedPlants = [...plants];
       updatedPlants[locationIndex].notes.splice(noteLocationIndex, 1)
+      setPlants(updatedPlants);
+    })
+  }
+
+  // Plant Images
+  const addPlantImages = async (plantUid, file) => {
+    addPlantImagesService(plantUid, file).then((imgUrl) => {
+      console.log(imgUrl);
+
+      const newPlantImgData = {
+        imgUrl,
+      }
+      const locationIndex = plants.findIndex((plant => plant.uid === plantUid));
+      const updatedPlants = [...plants];
+      updatedPlants[locationIndex].images.push(newPlantImgData)
       setPlants(updatedPlants);
     })
   }
@@ -208,6 +225,7 @@ export const AuthProvider = ({ children }) => {
       deleteLocation,
       addPlantNote,
       deletePlantNote,
+      addPlantImages,
       isLoading,
     }),
     [user, locations, plants]

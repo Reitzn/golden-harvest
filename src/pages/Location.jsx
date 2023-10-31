@@ -3,6 +3,8 @@ import React from "react";
 import TempGraph from "../componets/location/TempGraph";
 import EnvironmentGraph from "../componets/location/EnvironmentGraph";
 import StaticEnvironmentGraph from "../componets/location/StaticEnvironmentGraph";
+import TemperatureGraph from "../componets/location/EnvironmentalGraphs/TemperatureGraph";
+import HumidityGraph from "../componets/location/EnvironmentalGraphs/HumidityGraph";
 
 import { Container, Grid } from "@mui/material";
 import { useAuth } from "../context/AuthContext";
@@ -51,7 +53,11 @@ export default function TraysPage() {
         </Grid>
         <Grid item xs={12}>
           <PageItem>
-            <StaticEnvironmentGraph />
+            <h2>Environmental Conditions</h2>
+            <TemperatureGraph />
+            {/* <HumidityGraph /> */}
+            {/* <StaticEnvironmentGraph /> */}
+            {/* <EnvironmentGraph /> */}
           </PageItem>
         </Grid>
         <Grid item xs={12}>
@@ -61,9 +67,6 @@ export default function TraysPage() {
           </PageItem>
         </Grid>
       </Grid>
-
-      {/* <TempGraph /> */}
-      {/* <EnvironmentGraph /> */}
     </Container>
   );
 }

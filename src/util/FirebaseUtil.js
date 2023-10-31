@@ -11,8 +11,7 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebase-config";
 import { auth } from "../firebase-config";
-import { getStorage, ref, uploadBytes } from "firebase/storage";
-
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 // --------------------------------------------------------------
 // ----------------------- User Services ------------------------
@@ -80,11 +79,12 @@ export const getPlantsService = async () => {
 
 // Add Plant
 export const addPlantService = async (name, scientificName, location) => {
-  console.log("Adding a plant");
   const newPlant = {
     name,
     scientificName,
     location,
+    notes: [],
+    images: [],
     imgUrl: "https://placehold.jp/200x200.png",
   };
   const plantsRef = collection(db, "users", auth?.currentUser?.uid, "plants");
@@ -103,7 +103,6 @@ export const updatePlantService = async (
     name,
     scientificName,
     location: selectedLocation,
-    imgUrl: "https://placehold.jp/200x200.png",
   };
 
   const plantsRef = doc(
@@ -155,6 +154,61 @@ export const deletePlantNoteService = async (plantUid, date, action, note) => {
   return await updateDoc(plantsRef, {
     notes: arrayRemove(newNoteData),
   });
+};
+
+// --- Plant Images ---
+
+// Add Plant Images
+export const addPlantImagesService = async (plantUid, file) => {
+  const storage = getStorage();
+  const storageRef = ref(
+    storage,
+    "images/" + auth?.currentUser?.uid + "/" + plantUid + "/" + file?.name
+  );
+  const plantsRef = doc(
+    collection(db, "users", auth?.currentUser?.uid, "plants"),
+    plantUid
+  );
+
+  try {
+    const snapshot = await uploadBytes(storageRef, file);
+    const imgUrl = await getDownloadURL(snapshot.ref);
+    const docRef = await updateDoc(plantsRef, {
+      images: arrayUnion({
+        imgUrl,
+      }),
+    });
+    console.log("Uploaded a blob or file!");
+    console.log(snapshot);
+    console.log(imgUrl);
+    console.log(docRef);
+
+    return imgUrl;
+  } catch (error) {
+    console.error(error);
+  }
+
+  // 'file' comes from the Blob or File API
+  // uploadBytes(storageRef, file).then(async (snapshot) => {
+  //   const imgUrl = await getDownloadURL(snapshot.ref);
+  //   console.log("Uploaded a blob or file!");
+  //   console.log(snapshot);
+  //   console.log(imgUrl);
+
+  //   // Add image url to image list
+  //   const plantsRef = doc(
+  //     collection(db, "users", auth?.currentUser?.uid, "plants"),
+  //     plantUid
+  //   );
+  //   const newImgsData = {
+  //     imgUrl,
+  //   };
+  //   updateDoc(plantsRef, {
+  //     imgUrls: arrayUnion(newImgsData),
+  //   }).then((docRef) => {
+  //     return docRef;
+  //   });
+  // });
 };
 
 // --------------------------------------------------------------

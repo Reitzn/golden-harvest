@@ -39,8 +39,6 @@ export default function StaticEnvironmentGraph() {
   const db = getDatabase();
   const starCountRef = ref(db, "MNZ7KUZRCNU1mTDYoEgfW75Vggz1/iN7ncujCvt4osHU6Opey");
 
-  // this useEffect will get called only
-  // when component gets mounted first time
   useEffect(() => {
     // here onValue will get initialized once
     // and on db changes its callback will get invoked
@@ -77,12 +75,7 @@ export default function StaticEnvironmentGraph() {
   };
 
   return (
-    <Box
-      sx={{
-        width: "100%",
-        height: 400,
-      }}
-    >
+    <>
       <h2>Environmental Conditions</h2>
       {current && (
         <>
@@ -174,7 +167,6 @@ export default function StaticEnvironmentGraph() {
           </Box>
         </>
       )}
-
-    </Box>
+    </>
   );
 }

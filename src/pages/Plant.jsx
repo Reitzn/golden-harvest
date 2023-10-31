@@ -1,22 +1,14 @@
 import React from "react";
-import IconButton from "@mui/material/IconButton";
-import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import { Container, Grid } from "@mui/material";
 import { useAuth } from "../context/AuthContext";
 import { useParams } from "react-router-dom";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import Divider from "@mui/material/Divider";
-import { Box } from "@mui/material";
 
 import EditPlantMenu from "../componets/plant/EditPlantMenu/EditPlantMenu";
-import AddPlantNoteButton from "../componets/plant/PlantNote/AddPlantNoteButton";
-import DeletePlantNoteButton from "../componets/plant/PlantNote/DeletePlantNoteButton";
-
-import moment from "moment";
+import PlantNotes from "../componets/plant/PlantNote/PlantNotes";
 
 import { PageItem } from "../componets/shared/PageItem";
+
+import ImageSection from "../componets/plant/ImageSection";
 
 export default function PlantPage() {
   const { plants, locations } = useAuth();
@@ -24,7 +16,9 @@ export default function PlantPage() {
 
   const plant = plants?.find((plant) => plant.uid === plantUid);
 
-  const plantLocation = locations?.find((location) => location?.uid === plant?.location);
+  const plantLocation = locations?.find(
+    (location) => location?.uid === plant?.location
+  );
 
   // https://smartdevpreneur.com/setting-material-ui-grid-item-height/
 
@@ -96,46 +90,13 @@ export default function PlantPage() {
         <Grid item xs={12}>
           <PageItem>
             <h2>Notes</h2>
-            <List
-              sx={{
-                width: "100%",
-                // maxWidth: 360,
-                bgcolor: "background.paper",
-              }}
-            >
-              {plant?.notes?.map((note) => (
-                <>
-                  {/* maybe i could do better with a key but.... will they ever be the same? lol */}
-                  <ListItem key={note.note}>
-                    <ListItemText primary={note.action} secondary={moment.unix(note.date).format("MM/DD/YYYY")} />
-                    <ListItemText secondary={note.note} />
-                    <DeletePlantNoteButton plantUid={plantUid} {...note}  />
-                  </ListItem>
-                  <Divider component="li" />
-                </>
-              ))}
-            </List>
-            <AddPlantNoteButton plantUid={plantUid} />
+            <PlantNotes notes={plant?.notes} />
           </PageItem>
         </Grid>
         <Grid item xs={12}>
           <PageItem>
             <h2>Images</h2>
-            <Box
-              m={3}
-              display="flex"
-              justifyContent="flex-end"
-              alignItems="flex-end"
-            >
-              <IconButton
-                color="primary"
-                aria-label="upload picture"
-                component="label"
-              >
-                <input hidden accept="image/*" type="file" />
-                <PhotoCamera />
-              </IconButton>
-            </Box>
+            <ImageSection plant={plant} />
           </PageItem>
         </Grid>
       </Grid>

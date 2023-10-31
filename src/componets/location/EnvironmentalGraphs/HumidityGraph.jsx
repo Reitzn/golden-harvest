@@ -16,17 +16,19 @@ import { Box, ButtonGroup, Button, Grid, Paper } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import moment from "moment";
 import { useParams } from "react-router-dom";
-import { auth } from "../../firebase-config";
+import { auth } from "../../../firebase-config";
 
-export default function EnvironmentGraph() {
+export default function HumidityGraph() {
   const dateFormatter = (date) => {
     return moment(date).format("MM/DD/YY HH:mm");
   };
 
+  const [temperatureState, setTemperatureState] = useState(null);
   const [temp, setTemp] = useState(null);
+
   const [humidity, setHumidity] = useState(null);
-  const [illuminance, setIlluminance] = useState(null);
-  const [pressure, setPressure] = useState(null);
+  const [currentHumidity, setCurrentHumidity] = useState(null);
+
 
   let { locationUid } = useParams();
 
@@ -41,12 +43,10 @@ export default function EnvironmentGraph() {
   const [yAxisLabel, setYAxisLabel] = useState(temperatureYAxisLabel);
 
   const db = getDatabase();
-  const dataRef = ref(
-    db,
-    auth?.currentUser?.uid + "/" + locationUid + "/temperature/history"
-  );
-
-  let temperature = null;
+  // const dataRef = ref(
+  //   db,
+  //   auth?.currentUser?.uid + "/" + locationUid + "/temperature/history"
+  // );
 
   // this useEffect will get called only
   // when component gets mounted first time
@@ -54,35 +54,42 @@ export default function EnvironmentGraph() {
     // here onValue will get initialized once
     // and on db changes its callback will get invoked
     // resulting in changing your state value
-    onValue(dataRef, (snapshot) => {
-      const data = snapshot.val();
-      console.log(data);
+    if (auth?.currentUser) {
+      const dataRef = ref(
+        db,
+        auth?.currentUser?.uid + "/" + locationUid + "/humidity"
+      );
+      onValue(dataRef, (snapshot) => {
+        const data = snapshot.val();
+        console.log(data);
 
-      const newData = Object.values(data).map((project) => project);
-      console.log(newData);
+        //const newData = Object.values(data).map((project) => project);
+        //console.log(newData);
 
-      setTemp(newData);
-    });
+        setCurrentHumidity(data.current);
+        setHumidity(Object.values(data.history).map((project) => project));
+      });
+    }
     return () => {
       // this is cleanup function, will call just on component will unmount
       // you can clear your events listeners or any async calls here
     };
-  }, []);
+  }, [auth?.currentUser]);
 
   const tooltipLabelStyle = {
     color: "black",
   };
 
-
   return (
-    temp && (
+    humidity && (
       <>
-        <h2>Environmental Conditions</h2>
+      <h3>Humidity</h3>
+        <p>Current Humidity: {currentHumidity} C</p>
         <ResponsiveContainer width="100%" height={300}>
           <LineChart
             width={500}
             height={300}
-            data={temp}
+            data={humidity}
             margin={{
               top: 5,
               right: 30,
@@ -93,7 +100,7 @@ export default function EnvironmentGraph() {
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis
               dataKey="ts"
-              domain={[temp[0].ts, temp[temp.length - 1].ts]}
+              domain={[humidity[0].ts, humidity[humidity.length - 1].ts]}
               scale="time"
               type="number"
               tickFormatter={dateFormatter}
@@ -114,7 +121,7 @@ export default function EnvironmentGraph() {
             />
             <Line
               type="monotone"
-              dataKey={dataKey}
+              dataKey={"humidity"}
               stroke="#8884d8"
               dot={false}
             />
