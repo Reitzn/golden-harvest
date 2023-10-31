@@ -3,9 +3,10 @@
 This project is a seed-to-harvest/plant tracking web app bootstrapped with [Create React App](https://github.com/facebook/create-react-app). 
 
 ## Tech Stack 
-- Firebase [V9](https://firebase.google.com/)
-- React Router [V6](https://reactrouter.com/en/main)
-- MUI [V5](https://mui.com/material-ui/)
+- React [v18](https://react.dev/)
+- Firebase [v9](https://firebase.google.com/)
+- React Router [v6](https://reactrouter.com/en/main)
+- MUI [v5](https://mui.com/material-ui/)
 
 ## Test Account 
 admin@admin.com : password1
