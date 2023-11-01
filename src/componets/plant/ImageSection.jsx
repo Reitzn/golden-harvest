@@ -6,6 +6,9 @@ import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import { useAuth } from "../../context/AuthContext";
 import { useParams } from "react-router-dom";
+import ImageListItemBar from '@mui/material/ImageListItemBar';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
+import DeleteIcon from "@mui/icons-material/Delete";
 
 export default function ImageSection(props) {
     const { addPlantImages } = useAuth();
@@ -40,6 +43,24 @@ export default function ImageSection(props) {
               src={item.imgUrl}
               alt={"test"}
               loading="lazy"
+            />
+            <ImageListItemBar
+              sx={{
+                background:
+                  'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
+                  'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+              }}
+              title="Test Title"
+              position="top"
+              actionIcon={
+                <IconButton
+                  sx={{ color: 'white' }}
+                  aria-label={`star ${item.title}`}
+                >
+                  <DeleteIcon />
+                </IconButton>
+              }
+              actionPosition="right"
             />
           </ImageListItem>
         ))}

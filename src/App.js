@@ -51,7 +51,7 @@ export default function App() {
       if (!auth.currentUser && !isLoading) {
         return navigate("/");
       }
-    });
+    }, [isLoading]);
 
     return (
       <>
@@ -63,12 +63,13 @@ export default function App() {
 
   const UnprotectedRoute = ({ children }) => {
     const navigate = useNavigate();
+    const { isLoading } = useAuth();
 
     useEffect(() => {
-      if (auth.currentUser) {
+      if (auth.currentUser && !isLoading) {
         return navigate("/dashboard");
       }
-    });
+    }, [isLoading]);
     return children;
   };
 

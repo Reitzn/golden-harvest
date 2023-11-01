@@ -127,6 +127,7 @@ export const AuthProvider = ({ children }) => {
           scientificName: scientificName,
           location: selectedLocation,
           notes: [],
+          images: [],
           imgUrl: "https://placehold.jp/200x200.png",
         };
         setPlants((oldArray) => [...oldArray, newPlant]);
@@ -151,7 +152,6 @@ export const AuthProvider = ({ children }) => {
         name: commonName,
         scientificName: scientificName,
         location: selectedLocation,
-        imgUrl: "https://placehold.jp/200x200.png",
       };
 
       const updatedPlants = plants.map((plant) =>
@@ -199,8 +199,6 @@ export const AuthProvider = ({ children }) => {
   // Plant Images
   const addPlantImages = async (plantUid, file) => {
     addPlantImagesService(plantUid, file).then((imgUrl) => {
-      console.log(imgUrl);
-
       const newPlantImgData = {
         imgUrl,
       }

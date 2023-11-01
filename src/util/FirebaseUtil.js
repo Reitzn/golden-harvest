@@ -173,42 +173,16 @@ export const addPlantImagesService = async (plantUid, file) => {
   try {
     const snapshot = await uploadBytes(storageRef, file);
     const imgUrl = await getDownloadURL(snapshot.ref);
-    const docRef = await updateDoc(plantsRef, {
+    await updateDoc(plantsRef, {
       images: arrayUnion({
         imgUrl,
       }),
     });
-    console.log("Uploaded a blob or file!");
-    console.log(snapshot);
-    console.log(imgUrl);
-    console.log(docRef);
 
     return imgUrl;
   } catch (error) {
     console.error(error);
   }
-
-  // 'file' comes from the Blob or File API
-  // uploadBytes(storageRef, file).then(async (snapshot) => {
-  //   const imgUrl = await getDownloadURL(snapshot.ref);
-  //   console.log("Uploaded a blob or file!");
-  //   console.log(snapshot);
-  //   console.log(imgUrl);
-
-  //   // Add image url to image list
-  //   const plantsRef = doc(
-  //     collection(db, "users", auth?.currentUser?.uid, "plants"),
-  //     plantUid
-  //   );
-  //   const newImgsData = {
-  //     imgUrl,
-  //   };
-  //   updateDoc(plantsRef, {
-  //     imgUrls: arrayUnion(newImgsData),
-  //   }).then((docRef) => {
-  //     return docRef;
-  //   });
-  // });
 };
 
 // --------------------------------------------------------------
