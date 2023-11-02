@@ -7,7 +7,6 @@ import ImageListItem from "@mui/material/ImageListItem";
 import { useAuth } from "../../context/AuthContext";
 import { useParams } from "react-router-dom";
 import ImageListItemBar from '@mui/material/ImageListItemBar';
-import StarBorderIcon from '@mui/icons-material/StarBorder';
 import DeleteIcon from "@mui/icons-material/Delete";
 
 export default function ImageSection(props) {
