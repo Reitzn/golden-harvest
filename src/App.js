@@ -51,7 +51,7 @@ export default function App() {
       if (!auth.currentUser && !isLoading) {
         return navigate("/");
       }
-    }, [isLoading]);
+    }, [isLoading, navigate]);
 
     return (
       <>
@@ -69,7 +69,7 @@ export default function App() {
       if (auth.currentUser && !isLoading) {
         return navigate("/dashboard");
       }
-    }, [isLoading]);
+    }, [isLoading, navigate]);
     return children;
   };
 
