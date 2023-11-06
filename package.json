@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.6",
-    "@emotion/styled": "^11.10.6",
+    "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.14.13",
     "@mui/joy": "5.0.0-alpha.72",
     "@mui/lab": "^5.0.0-alpha.123",
